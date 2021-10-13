@@ -1,0 +1,2 @@
+# Sodalite
+Sodalite Obsidian theme
