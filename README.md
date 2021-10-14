@@ -28,6 +28,12 @@ Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes
 
 ## Changelog
 
+**v0.4.0**
+
+- Added styling for the prompt
+- Added styling for buttons
+- Fixed graph line colors
+
 **v0.3.0**
 
 - Added styling for modals

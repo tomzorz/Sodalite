@@ -344,7 +344,7 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
 }
 
 .titlebar .titlebar-text::after {
-    content: " - https://tmz.io/sodalite v0.3.0";
+    content: " - https://tmz.io/sodalite v0.4.0";
 }
 
 /* status bar */
@@ -362,6 +362,12 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
     .status-bar {
         display: none;
     }
+}
+
+/* buttons */
+
+button.mod-cta {
+    background: var(--custom-accent-muted);
 }
 
 /* popups */
@@ -400,6 +406,7 @@ body:not(.is-mobile) .modal-container .modal-bg {
 
 .modal-container .modal .vertical-tab-content {
     background: transparent;
+    padding-top: 20px;
 }
 
 .modal-container .modal .vertical-tab-header {
@@ -427,6 +434,14 @@ body:not(.is-mobile) .modal-container .modal-bg {
 
 .modal-container .modal .modal-close-button {
     top: -40px;
+}
+
+.modal-container .prompt {
+    background: transparent;
+}
+
+.modal-container .prompt .suggestion-item.is-selected {
+    background: linear-gradient(160deg, transparent, rgba(255, 255, 255, 0.1));
 }
 
 /* content */
@@ -502,6 +517,14 @@ body.is-mobile .graph-controls {
     background: linear-gradient(135deg, var(--mica-content-bg-start), var(--mica-content-bg-end));
     background-attachment: fixed;
     backdrop-filter: none;
+}
+
+.graph-view.color-line {
+    color: #404050;
+}
+
+.graph-view.color-line-highlight {
+    color: #507090;
 }
 
 /* preview frontmatter */ 
