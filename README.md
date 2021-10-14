@@ -14,10 +14,7 @@ I've made several other useful snippets and tidbits, these are available at my o
 
 ### Unusual title formatting
 
-As Obsidian prominently features the note title in a separate title-bar outside of the document itself, this theme:
-
-1. scales that title up to H1 size
-2. recommends using only H2 and smaller headers in the document itself
+As Obsidian prominently features the note title in a separate title-bar outside of the document itself, this theme scales that title up to H1 size.
 
 ### Unusual status bar placement
 
