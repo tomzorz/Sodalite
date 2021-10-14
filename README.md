@@ -8,6 +8,8 @@ Tested with Obsidian v0.12.15.
 
 ![Sodalite for Obsidian](./screenshot.png)
 
+I've made several other useful snippets and tidbits, these are available at my obsidian-toolkit repo: https://github.com/tomzorz/obsidian-toolkit
+
 ## Relatively Opinionated?
 
 ### Unusual title formatting
