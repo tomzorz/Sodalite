@@ -300,17 +300,17 @@ body {
 
 /* change note header to match h1 */
 
-body:not(.plugin-sliding-panes) .workspace-leaf-content[data-type="markdown"] .view-header {
+body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .view-header {
     height: 56px;
 }
 
-body:not(.plugin-sliding-panes) .workspace-leaf-content[data-type="markdown"] .view-header .view-header-title {
+body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .view-header .view-header-title {
     font-size: 38px;
     line-height: 56px;
     font-family: "Futura Md BT", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-body:not(.plugin-sliding-panes) .workspace-leaf-content[data-type="markdown"] .view-header .view-header-icon {
+body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .view-header .view-header-icon {
     padding-top: 17px;
     width: 48px;
     text-align: center;
@@ -344,7 +344,7 @@ body:not(.plugin-sliding-panes) .workspace-leaf-content[data-type="markdown"] .v
 }
 
 .titlebar .titlebar-text::after {
-    content: " - https://tmz.io/sodalite v0.2.0";
+    content: " - https://tmz.io/sodalite v0.3.0";
 }
 
 /* status bar */
@@ -376,6 +376,59 @@ body:not(.plugin-sliding-panes) .workspace-leaf-content[data-type="markdown"] .v
     box-shadow: 0 3.2px 7.2px 0 rgba(0,0,0,.132),0 .6px 1.8px 0 rgba(0,0,0,.108);
 }
 
+/* modals */
+
+body:not(.is-mobile) .modal-container .modal-bg {
+    background-color: rgba(0, 0, 0, .3);
+    backdrop-filter: blur(12px);
+}
+
+.modal-container .modal {
+    background: linear-gradient(135deg, var(--mica-base-bg-start), var(--mica-base-bg-end));
+    box-shadow: 0 6.4px 14.4px 0 rgba(0,0,0,.132),0 1.2px 3.6px 0 rgba(0,0,0,.108);
+    overflow: visible !important;
+}
+
+.modal-container .modal .modal-content {
+    padding: 0;
+}
+
+.modal-container .modal .modal-title {
+    font-family: "Futura Md BT", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 32px;
+}
+
+.modal-container .modal .vertical-tab-content {
+    background: transparent;
+}
+
+.modal-container .modal .vertical-tab-header {
+    background: transparent;
+    padding-top: 0;
+}
+
+.modal-container .modal .vertical-tab-content-container {
+    background: linear-gradient(135deg, var(--mica-content-bg-start), var(--mica-content-bg-end));
+    padding: 0;
+    border-left: 2px solid var(--mica-border);
+}
+
+.modal-container .modal .vertical-tab-nav-item {
+    background: transparent;
+}
+
+.modal-container .modal .vertical-tab-nav-item.is-active {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.5);
+    margin: 0 8px;
+    font-weight: bold;
+}
+
+.modal-container .modal .modal-close-button {
+    top: -40px;
+}
+
 /* content */
 
 .view-content {
@@ -384,7 +437,8 @@ body:not(.plugin-sliding-panes) .workspace-leaf-content[data-type="markdown"] .v
 
 /* scroll-below */
 
-.workspace-leaf-content > .nav-header, body:not(.plugin-sliding-panes) .workspace-leaf-content > .view-header {
+body:not(.is-mobile) .workspace-leaf-content > .nav-header,
+body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content > .view-header {
     position: absolute;
     z-index: 90;
     width: 100%;
@@ -395,27 +449,27 @@ body:not(.plugin-sliding-panes) .workspace-leaf-content[data-type="markdown"] .v
     background-attachment: fixed !important;
 }
 
-.workspace-leaf-content > .nav-header + * {
+body:not(.is-mobile) .workspace-leaf-content > .nav-header + * {
     padding-top: calc(48px + 6px);
 }
 
-.workspace-leaf-content > .nav-header + *::-webkit-scrollbar-track {
+body:not(.is-mobile) .workspace-leaf-content > .nav-header + *::-webkit-scrollbar-track {
     margin-top: 48px;
 }
 
-body:not(.plugin-sliding-panes) .workspace-leaf-content[data-type="markdown"] .markdown-preview-sizer {
+body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .markdown-preview-sizer {
     padding-top: 56px;
 }
 
-body:not(.plugin-sliding-panes) .workspace-leaf-content[data-type="markdown"] .markdown-preview-view::-webkit-scrollbar-track {
+body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .markdown-preview-view::-webkit-scrollbar-track {
     margin-top: 56px;
 }
 
-body:not(.plugin-sliding-panes) .workspace-leaf-content[data-type="markdown"] .CodeMirror-scroll {
+body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .CodeMirror-scroll {
     padding-top: 56px;
 }
 
-body:not(.plugin-sliding-panes) .workspace-leaf-content[data-type="markdown"] .CodeMirror-vscrollbar::-webkit-scrollbar-track {
+body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .CodeMirror-vscrollbar::-webkit-scrollbar-track {
     margin-top: 56px;
 }
 
@@ -442,6 +496,12 @@ body:not(.plugin-sliding-panes) .workspace-leaf-content[data-type="markdown"] .C
 
 .graph-controls .setting-item-name {
     --text-muted: var(--custom-text-muted);
+}
+
+body.is-mobile .graph-controls {
+    background: linear-gradient(135deg, var(--mica-content-bg-start), var(--mica-content-bg-end));
+    background-attachment: fixed;
+    backdrop-filter: none;
 }
 
 /* preview frontmatter */ 

@@ -28,6 +28,11 @@ Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes
 
 ## Changelog
 
+**v0.3.0**
+
+- Added styling for modals
+- Fixed various issues on mobiles
+
 **v0.2.0**
 
 - Added support for the Sliding Panes plugin
