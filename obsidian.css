@@ -336,7 +336,7 @@ body {
 }
 
 .titlebar .titlebar-text::after {
-    content: " - https://tmz.io/sodalite v0.1.1";
+    content: " - https://tmz.io/sodalite v0.1.2";
 }
 
 /* status bar */
@@ -345,13 +345,20 @@ body {
     border: none;
     position: absolute;
     margin-top: -18px;
-    width: calc(100% - 120px);
+    width: calc(100% - 120px - 500px);
+    margin-left: 500px;
     font-size: 12px;
 }
 
-/* suggestion container */
+@media only screen and (max-width: 1280px) {
+    .status-bar {
+        display: none;
+    }
+}
 
-.suggestion-container {
+/* popups */
+
+.suggestion-container, .menu {
     margin-top: 6px;
     border-radius: 8px;
     background: 

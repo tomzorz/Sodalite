@@ -31,10 +31,16 @@ Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes
 
 ## Changelog
 
+**v0.1.2**
+
+- Styled right-click menu.
+- Fixed status-bar covering up the back-fwd buttons
+- Status bar automatically disappears when window is less than 1200px wide
+
 **v0.1.1**
 
-Fixed css filename for the community listing.
+- Fixed css filename for the community listing.
 
 **v0.1**
 
-Initial release.
+- Initial release.
