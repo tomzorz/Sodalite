@@ -31,6 +31,10 @@ Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes
 
 ## Changelog
 
+**v0.2.0**
+
+- Added support for the Sliding Panes plugin
+
 **v0.1.3**
 
 - Fixed the graph controls first option being hidden if the graph was open in the middle
