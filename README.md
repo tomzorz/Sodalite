@@ -31,6 +31,10 @@ Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes
 
 ## Changelog
 
+**v0.1.3**
+
+- Fixed the graph controls first option being hidden if the graph was open in the middle
+
 **v0.1.2**
 
 - Styled right-click menu.
