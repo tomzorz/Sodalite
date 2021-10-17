@@ -2,6 +2,7 @@
     --custom-accent: #8BA4CC;
     --custom-accent-muted: #304F80;
     --custom-accent-muted-transparent: rgba(48, 79, 128, 0.3);
+    --custom-accent-muted-selection: rgba(48, 79, 128, 0.99);
     --custom-text-on-accent: #000000;
     --custom-text-muted: #cacaca;
     --custom-text-faint: #909090;
@@ -346,7 +347,7 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
 
 .titlebar .titlebar-text::after {
     opacity: 0.7;
-    content: " - https://tmz.io/sodalite v0.5.0";
+    content: " - https://tmz.io/sodalite v0.5.1";
 }
 
 /* status bar */
@@ -382,9 +383,10 @@ button.mod-cta:hover {
     margin-top: 6px;
     border-radius: 8px;
     background: 
-        linear-gradient(135deg, var(--mica-content-bg-start), var(--mica-content-bg-end)),
+        rgba(0,0,0,0.3)
         linear-gradient(160deg, transparent, rgba(255, 255, 255, 0.02));
     border: 2px solid var(--mica-border);
+    backdrop-filter: blur(12px);
     box-shadow: 0 3.2px 7.2px 0 rgba(0,0,0,.132),0 .6px 1.8px 0 rgba(0,0,0,.108);
 }
 
@@ -492,6 +494,13 @@ body:not(.is-mobile) .modal-container .modal-bg {
     height: 100%;
 }
 
+/* selection */
+
+::selection, .CodeMirror-line::selection, .CodeMirror-line > span::selection, .CodeMirror-line > span > span::selection, .CodeMirror-selected, .CodeMirror-focused .CodeMirror-selected {
+    background: var(--custom-accent-muted-selection);
+    color: white;
+}
+
 /* scroll-below */
 
 body:not(.is-mobile) .workspace-leaf-content > .nav-header,
@@ -581,6 +590,12 @@ body.is-mobile .graph-controls {
 
 .side-dock-settings {
     margin-bottom: 0;
+}
+
+/* content colors */
+
+.cm-s-obsidian span.cm-hashtag {
+    color: var(--text-accent);
 }
 
 /* add icons to tree */

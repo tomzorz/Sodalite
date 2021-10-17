@@ -28,6 +28,12 @@ Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes
 
 ## Changelog
 
+**v0.5.1**
+
+- Adjusted suggestion container styling to match other popups
+- Fixed selected text styling to be more visible
+- Matched edit mode tag colors to preview mode tag colors
+
 **v0.5.0**
 
 - Added styling for button hover state
