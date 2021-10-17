@@ -28,6 +28,14 @@ Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes
 
 ## Changelog
 
+**v0.5.0**
+
+- Added styling for button hover state
+- Added stying for tooltips
+- Added styling for notices
+- Consolidated the active style for vertical-tabs with the file listing
+- Fixed some mobile issues (middle area button paddings, graph controls positioning)
+
 **v0.4.0**
 
 - Added styling for the prompt

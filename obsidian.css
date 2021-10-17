@@ -1,6 +1,7 @@
 :root {
     --custom-accent: #8BA4CC;
     --custom-accent-muted: #304F80;
+    --custom-accent-muted-transparent: rgba(48, 79, 128, 0.3);
     --custom-text-on-accent: #000000;
     --custom-text-muted: #cacaca;
     --custom-text-faint: #909090;
@@ -176,7 +177,7 @@ body {
     margin-top: 4px;
 }
 
-.workspace-leaf-content[data-type="markdown"] .view-actions .view-action svg {
+body:not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .view-actions .view-action svg {
     margin-top: 12px;
 }
 
@@ -344,7 +345,8 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
 }
 
 .titlebar .titlebar-text::after {
-    content: " - https://tmz.io/sodalite v0.4.0";
+    opacity: 0.7;
+    content: " - https://tmz.io/sodalite v0.5.0";
 }
 
 /* status bar */
@@ -368,6 +370,10 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
 
 button.mod-cta {
     background: var(--custom-accent-muted);
+}
+
+button.mod-cta:hover {
+    background: var(--custom-accent);
 }
 
 /* popups */
@@ -428,6 +434,7 @@ body:not(.is-mobile) .modal-container .modal-bg {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
     margin: 0 8px;
     font-weight: bold;
 }
@@ -442,6 +449,41 @@ body:not(.is-mobile) .modal-container .modal-bg {
 
 .modal-container .prompt .suggestion-item.is-selected {
     background: linear-gradient(160deg, transparent, rgba(255, 255, 255, 0.1));
+}
+
+/* tooltips */
+
+.tooltip {
+    background: 
+        rgba(0,0,0,0.4)
+        linear-gradient(160deg, transparent, rgba(255,255,255,0.05));
+    backdrop-filter: blur(18px);
+}
+
+.tooltip .tooltip-arrow {
+    backdrop-filter: blur(18px);
+    border-bottom: 5px solid rgba(0,0,0,0.4);
+}
+
+.tooltip.mod-right .tooltip-arrow {
+    border-right: 5px solid rgba(0,0,0,0.4);
+}
+
+.tooltip.mod-left .tooltip-arrow {
+    border-left: 5px solid rgba(0,0,0,0.4);
+}
+
+.tooltip.mod-top .tooltip-arrow {
+    border-top: 5px solid rgba(0,0,0,0.4);
+}
+
+/* notice */
+
+.notice-container .notice {
+    background: 
+        var(--custom-accent-muted-transparent)
+        linear-gradient(160deg, transparent, rgba(255,255,255,0.05));
+    backdrop-filter: blur(18px);
 }
 
 /* content */
@@ -501,7 +543,7 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
     backdrop-filter: blur(10px);
 }
 
-.workspace-split.mod-root .graph-controls {
+body:not(.is-mobile) .workspace-split.mod-root .graph-controls {
     top: 32px;
 }
 
