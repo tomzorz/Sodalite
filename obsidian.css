@@ -347,7 +347,7 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
 
 .titlebar .titlebar-text::after {
     opacity: 0.7;
-    content: " - https://tmz.io/sodalite v0.5.1";
+    content: " - https://tmz.io/sodalite v0.5.2";
 }
 
 /* status bar */
@@ -584,6 +584,7 @@ body.is-mobile .graph-controls {
     background: linear-gradient(160deg, transparent, rgba(255, 255, 255, 0.02));
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 20px;
 }
 
 /* side dock */

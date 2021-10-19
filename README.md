@@ -28,6 +28,10 @@ Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes
 
 ## Changelog
 
+**v0.5.2**
+
+- Added a bit of extra padding on the bottom of the frontmatter
+
 **v0.5.1**
 
 - Adjusted suggestion container styling to match other popups
