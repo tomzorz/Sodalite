@@ -28,6 +28,10 @@ Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes
 
 ## Changelog
 
+**v0.6.1**
+
+- Moved modal close button to the right
+
 **v0.6.0**
 
 - Updated screenshot
