@@ -28,6 +28,13 @@ Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes
 
 ## Changelog
 
+**v0.6.0**
+
+- Updated screenshot
+- Added sync working title bar animation
+- Adjusted sync icon size
+- Fixed a bug with multiple vertically split middle views
+
 **v0.5.2**
 
 - Added a bit of extra padding on the bottom of the frontmatter

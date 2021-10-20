@@ -50,6 +50,8 @@ body {
 .workspace-tab-header.is-before-active .workspace-tab-header-inner,
 .workspace-tab-header.is-after-active,
 .workspace-tab-header.is-after-active .workspace-tab-header-inner,
+.workspace-leaf .view-header-title-container:after,
+.workspace-leaf.mod-active .view-header-title-container:after,
 .status-bar,
 ::-webkit-scrollbar {
     background: transparent;
@@ -343,11 +345,13 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
     width: auto;
     left: 100px;
     padding-left: 22px;
+    z-index: 5;
 }
 
 .titlebar .titlebar-text::after {
+    z-index: 5;
     opacity: 0.7;
-    content: " - https://tmz.io/sodalite v0.5.2";
+    content: " - https://tmz.io/sodalite v0.6";
 }
 
 /* status bar */
@@ -591,6 +595,70 @@ body.is-mobile .graph-controls {
 
 .side-dock-settings {
     margin-bottom: 0;
+}
+
+/* checkboxes */
+
+.setting-item-control .checkbox-container.is-enabled {
+    background: var(--custom-accent-muted);
+}
+
+/* sync icon */
+
+.status-bar-item .status-bar-item-icon.sync-status-icon {
+    position: relative;
+}
+
+.status-bar-item .status-bar-item-icon.sync-status-icon svg {
+    width: 21px;
+    height: 21px;
+}
+
+.status-bar-item .status-bar-item-icon.sync-status-icon::after {
+    display: block;
+    width: 100%;
+    height: 26px;
+    position: fixed;
+    content: ' ';
+    left: 0;
+    top: 0;
+    z-index: -1;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+}
+
+/* .status-bar-item .status-bar-item-icon.sync-status-icon.mod-success::after {
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        transparent 30%,
+        rgba(40, 255, 40, 0.2) 50%,
+        transparent 70%,
+        transparent 100%);
+    animation: sync-flashing-success 5s 1;
+    animation-timing-function: linear;
+    background-size: 500px 100%;
+} */
+
+.status-bar-item .status-bar-item-icon.sync-status-icon.mod-working::after {
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        transparent 30%,
+        rgba(40, 40, 255, 0.2),
+        transparent 70%,
+        transparent 100%);
+    animation: sync-flashing 5s infinite;
+    animation-timing-function: linear;
+    background-size: 500px 100%;
+    background-repeat: repeat-x;
+}
+
+@keyframes sync-flashing {
+    0% {
+        background-position: 0% 0;
+    }
+    100%{
+        background-position: 1000px 0;
+    }
 }
 
 /* content colors */
