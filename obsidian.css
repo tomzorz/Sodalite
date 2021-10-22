@@ -348,10 +348,14 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
     z-index: 5;
 }
 
+.mod-mac .titlebar .titlebar-text {
+    left: 200px;
+}
+
 .titlebar .titlebar-text::after {
     z-index: 5;
     opacity: 0.7;
-    content: " - https://tmz.io/sodalite v0.6.1";
+    content: " - https://tmz.io/sodalite v0.6.2";
 }
 
 /* status bar */
@@ -363,6 +367,11 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
     width: calc(100% - 120px - 500px);
     margin-left: 500px;
     font-size: 12px;
+}
+
+.mod-mac .status-bar {
+    width: calc(100% - 100px - 500px);
+    margin-left: 600px;
 }
 
 @media only screen and (max-width: 1280px) {
@@ -646,7 +655,7 @@ body.is-mobile .graph-controls {
         rgba(40, 40, 255, 0.2),
         transparent 70%,
         transparent 100%);
-    animation: sync-flashing 5s infinite;
+    animation: sync-flashing 5s infinite, sync-fadein 1s 1;
     animation-timing-function: linear;
     background-size: 500px 100%;
     background-repeat: repeat-x;
@@ -659,6 +668,24 @@ body.is-mobile .graph-controls {
     100%{
         background-position: 1000px 0;
     }
+}
+
+@keyframes sync-fadein {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+/* collapse */
+
+.CodeMirror-gutter.CodeMirror-linenumbers, .CodeMirror-gutter.CodeMirror-foldgutter {
+    background: transparent;
 }
 
 /* content colors */

@@ -28,6 +28,12 @@ Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes
 
 ## Changelog
 
+**v0.6.2**
+
+- Attempted to fix the title bar on Mac
+- Added a fade in animation to the sync-working indicator animation, so it only shows up if the sync is taking longer than 0.5s
+- Fixed a dark background column in edit mode when collapsing headers was turned on
+
 **v0.6.1**
 
 - Moved modal close button to the right
