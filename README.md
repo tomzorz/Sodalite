@@ -28,6 +28,10 @@ Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes
 
 ## Changelog
 
+**v0.6.3**
+
+- 2nd attempt at Mac title bar fixes
+
 **v0.6.2**
 
 - Attempted to fix the title bar on Mac
