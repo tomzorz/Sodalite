@@ -355,7 +355,7 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
 .titlebar .titlebar-text::after {
     z-index: 5;
     opacity: 0.7;
-    content: " - https://tmz.io/sodalite v0.6.3";
+    content: " - https://tmz.io/sodalite v0.6.4";
 }
 
 /* status bar */
@@ -547,6 +547,14 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
 }
 
 body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .CodeMirror-vscrollbar::-webkit-scrollbar-track {
+    margin-top: 56px;
+}
+
+body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .cm-scroller {
+    padding-top: 56px;
+}
+
+body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .cm-scroller::-webkit-scrollbar-track {
     margin-top: 56px;
 }
 
