@@ -355,7 +355,7 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
 .titlebar .titlebar-text::after {
     z-index: 5;
     opacity: 0.7;
-    content: " - https://tmz.io/sodalite v0.6.4";
+    content: " - https://tmz.io/sodalite v0.6.5";
 }
 
 /* status bar */
@@ -692,6 +692,10 @@ body.is-mobile .graph-controls {
 
 .CodeMirror-gutter.CodeMirror-linenumbers, .CodeMirror-gutter.CodeMirror-foldgutter {
     background: transparent;
+}
+
+.markdown-source-view.mod-cm6 .cm-gutters {
+    background: transparent !important;
 }
 
 /* content colors */

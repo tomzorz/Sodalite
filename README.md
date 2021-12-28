@@ -28,9 +28,13 @@ Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes
 
 ## Changelog
 
+**0.6.5**
+
+- Fixed foldable headings gutter background
+
 **0.6.4**
 
-- Fixed scroll under styling for the new editor / live preview.
+- Fixed scroll under styling for the new editor / live preview
 
 **v0.6.3**
 
