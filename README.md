@@ -4,7 +4,7 @@
 
 This is the relatively opinionated Sodalite theme for [Obsidian](https://obsidian.md/). Inspired by in part some Windows 10 and 11 design ideas (Fluent, Mica). The theme only supports dark mode, as of v0.1.
 
-Tested with Obsidian v0.12.15.
+Tested with Obsidian v1.1.9.
 
 ![Sodalite for Obsidian](./screenshot.png)
 
@@ -27,6 +27,10 @@ In Obsidian, navigate to **Settings > Appearance > Themes** - you should be able
 Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes` folder and select it under **Settings > Appearance**.
 
 ## Changelog
+
+**0.7.0**
+
+- Updated theme for Obsidian v1.0 and above
 
 **0.6.5**
 
