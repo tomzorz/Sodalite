@@ -28,6 +28,11 @@ Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes
 
 ## Changelog
 
+**0.7.1**
+
+- fixed missing scrollbars in settings #5
+- fixed broken search field button #6
+
 **0.7.0**
 
 - Updated theme for Obsidian v1.0 and above
