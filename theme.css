@@ -224,6 +224,11 @@ body:not(.native-scrollbars) ::-webkit-scrollbar-thumb {
     transition: background-color 0.2s;
 }
 
+body:not(.native-scrollbars) .modal-container ::-webkit-scrollbar-thumb {
+    /* background-color: white; */
+    border: none;
+}
+
 /* view header wrangling */
 
 .view-header {
@@ -438,7 +443,7 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
 .titlebar .titlebar-text::after {
     z-index: 5;
     opacity: 0.7;
-    content: " - https://tmz.io/sodalite v0.7.0";
+    content: " - https://tmz.io/sodalite v0.7.1";
 }
 
 /* status bar */
@@ -832,4 +837,16 @@ body.is-mobile .graph-controls {
 
 .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path^="samplepaththatdoesntexist"] .nav-file-title-content::before {
     content: '⚡ ';
+}
+
+/* fix search */
+
+.search-input-container input {
+    padding-left: 12px;
+}
+
+.search-input-container .search-input-clear-button {
+    margin: 0;
+    top: unset;
+    bottom: 6px;
 }
