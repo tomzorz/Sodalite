@@ -4,7 +4,7 @@
 
 This is the relatively opinionated Sodalite theme for [Obsidian](https://obsidian.md/). Inspired by in part some Windows 10 and 11 design ideas (Fluent, Mica). The theme only supports dark mode, as of v0.1.
 
-Tested with Obsidian v1.1.9.
+Tested with Obsidian v1.3.4.
 
 ![Sodalite for Obsidian](./screenshot.png)
 
@@ -26,6 +26,15 @@ In Obsidian, navigate to **Settings > Appearance > Themes** - you should be able
 
 Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes` folder and select it under **Settings > Appearance**.
 
+## Recommended Settings
+
+Sodalite is optimized for the following appearance settings:
+
+- appearance > advanced > show inline title **OFF**
+- appearance > advanced > native menus **OFF**
+- appearance > advanced > show tab title bar **ON**
+- appearance > advanced > window frame style **Hidden**
+
 ## Snippets
 
 Sodalite offers CSS snippets to alter certain smaller aspects of the theme.
@@ -39,6 +48,18 @@ Sodalite offers CSS snippets to alter certain smaller aspects of the theme.
 These can be found in the `snippets` folder of the repository.
 
 ## Changelog
+
+**0.8.0**
+
+- remove workaround from earlier to re-fix search area #12
+- added theming for callouts #9
+- file tree highlighted item no longer flips between regular/bold font-weight on hover #14
+- improved styling of "special" files in the file tree, e.g. canvas, images #15
+- made tooltips more legible #18
+- fixed weird padding on right sidebar collapse button when collapsed #17
+- graph view settings are small now when closed #16
+- added recommended appearance settings to readme #19
+- fixed scroll-below on new bookmarks plugin #20
 
 **0.7.1**
 

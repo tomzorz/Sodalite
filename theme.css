@@ -332,6 +332,22 @@ body:not(.native-scrollbars) .modal-container ::-webkit-scrollbar-thumb {
     font-weight: bold;
 }
 
+.nav-file-title.is-active:hover {
+    font-weight: bold !important;
+}
+
+.nav-file-tag {
+    border-radius: 0;
+    font-size: 10px;
+    padding: 0px 2px;
+    color: var(--custom-text-muted);
+}
+
+.nav-file-tag::before {
+    content: '● ';
+    color: #caca00;
+}
+
 /* make the buttons slightly lighter + accented */
 
 .side-dock-ribbon-action {
@@ -380,10 +396,16 @@ body:not(.native-scrollbars) .modal-container ::-webkit-scrollbar-thumb {
     }
 }
 
+/* frame */
+
+.mod-windows {
+    --frame-right-space: 0;
+}
+
 /* sidebar toggle move */
 
-.is-hidden-frameless:not(.is-fullscreen) .workspace-tabs.mod-top-right-space .workspace-tab-header-container {
-    padding-right: calc(var(--frame-right-space) + 8px);
+.workspace-tabs.mod-top-right-space .workspace-tab-header-container {
+    padding-right: 8px !important;
 }
 
 /* change note header to match h1 */
@@ -443,7 +465,7 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
 .titlebar .titlebar-text::after {
     z-index: 5;
     opacity: 0.7;
-    content: " - https://tmz.io/sodalite v0.7.1";
+    content: " - https://tmz.io/sodalite v0.8.0";
 }
 
 /* status bar */
@@ -558,6 +580,8 @@ body:not(.is-mobile) .modal-container .modal-bg {
         rgba(0,0,0,0.4)
         linear-gradient(160deg, transparent, rgba(255,255,255,0.05));
     backdrop-filter: blur(18px);
+    font-size: 1em;
+    padding: 6px 12px;
 }
 
 .tooltip .tooltip-arrow {
@@ -619,6 +643,10 @@ body:not(.is-mobile) .workspace-leaf-content > .nav-header + * {
 
 body:not(.is-mobile) .workspace-leaf-content > .nav-header + *::-webkit-scrollbar-track {
     margin-top: 48px;
+}
+
+body:not(.is-mobile) .workspace-leaf-content[data-type="bookmarks"] .view-content {
+    padding-top: 56px;
 }
 
 body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .markdown-preview-sizer {
@@ -688,6 +716,7 @@ body:not(.is-mobile) .workspace-split.mod-root .graph-controls {
 
 .graph-controls.is-close {
     background: linear-gradient(160deg, transparent, rgba(255, 255, 255, 0.02));
+    width: 48px;
 }
 
 .graph-controls .setting-item-name {
@@ -839,14 +868,18 @@ body.is-mobile .graph-controls {
     content: '⚡ ';
 }
 
-/* fix search */
+/* callouts */
 
-.search-input-container input {
-    padding-left: 12px;
+body {
+    --callout-radius: 0;
+    --callout-padding: 18px;
 }
 
-.search-input-container .search-input-clear-button {
-    margin: 0;
-    top: unset;
-    bottom: 6px;
+.callout .callout-content > :last-child {
+    margin-block-end: 0;
+}
+
+.callout .callout-title .callout-icon {
+    margin-top: 0;
+    margin-right: 0.15em;
 }
