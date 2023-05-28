@@ -26,6 +26,18 @@ In Obsidian, navigate to **Settings > Appearance > Themes** - you should be able
 
 Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes` folder and select it under **Settings > Appearance**.
 
+## Snippets
+
+Sodalite offers CSS snippets to alter certain smaller aspects of the theme.
+
+| File name                  | Description                                                      |
+| -------------------------- | ---------------------------------------------------------------- |
+| content-max-width-1100.css | Limits maximum width of content to 1100 px and center aligns it. | 
+| content-max-width-900.css  | Limits maximum width of content to 900 px and center aligns it.  |
+| content-max-width-700.css  | Limits maximum width of content to 700 px and center aligns it.  |
+
+These can be found in the `snippets` folder of the repository.
+
 ## Changelog
 
 **0.7.1**
