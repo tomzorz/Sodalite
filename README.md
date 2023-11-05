@@ -49,6 +49,9 @@ These can be found in the `snippets` folder of the repository.
 
 ## Changelog
 
+**0.8.2**
+- fixed the previous patch by forcing it to apply
+
 **0.8.1**
 
 - fixed titlebar drag issue #8
