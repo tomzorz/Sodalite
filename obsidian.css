@@ -338,7 +338,7 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
 /* title bar */
 
 .titlebar {
-    -webkit-app-region: drag;
+    -webkit-app-region: drag !important;
 }
 
 .titlebar .titlebar-text {
@@ -356,7 +356,7 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
 .titlebar .titlebar-text::after {
     z-index: 5;
     opacity: 0.7;
-    content: " - https://tmz.io/sodalite v0.6.5";
+    content: " - https://tmz.io/sodalite v0.8.2";
 }
 
 /* status bar */
