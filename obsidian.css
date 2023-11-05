@@ -338,6 +338,7 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
 /* title bar */
 
 .titlebar {
+    -webkit-app-region: drag;
 }
 
 .titlebar .titlebar-text {
