@@ -4,7 +4,7 @@
 
 This is the relatively opinionated Sodalite theme for [Obsidian](https://obsidian.md/). Inspired by in part some Windows 10 and 11 design ideas (Fluent, Mica). The theme only supports dark mode, as of v0.1.
 
-Tested with Obsidian v1.3.4.
+Tested with Obsidian v1.6.7.
 
 ![Sodalite for Obsidian](./screenshot.png)
 
@@ -48,6 +48,11 @@ Sodalite offers CSS snippets to alter certain smaller aspects of the theme.
 These can be found in the `snippets` folder of the repository.
 
 ## Changelog
+
+**0.8.3**
+- fixed "All Properties" and "Outline" blur-behind effects #25
+- fixed active file highlight effect missing #26
+- minor tweaks to file explorer styles
 
 **0.8.2**
 - fixed the previous patch by forcing it to apply
