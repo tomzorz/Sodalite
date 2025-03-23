@@ -243,8 +243,13 @@ body:not(.native-scrollbars) .modal-container ::-webkit-scrollbar-thumb {
 
 /* mod top buttons */
 
-.sidebar-toggle-button.mod-left {
-    top: 24px;
+.mod-windows .sidebar-toggle-button.mod-left {
+    top: 28px;
+}
+
+.mod-macos.is-hidden-frameless:not(.is-popout-window) .sidebar-toggle-button.mod-right {
+    position: relative;
+    background-color: auto;
 }
 
 .workspace-ribbon.mod-left:before {
@@ -375,14 +380,19 @@ body:not(.is-phone) .workspace-leaf.mod-active .tree-item-self.has-focus {
 
 /* change flash animation */
 
+.is-flashing {
+    mix-blend-mode: normal;
+}
+
 .is-flashing.nav-file-title::after {
     content: ' ';
     display: block;
     position: absolute;
-    width: 100%;
+    width: 200%;
     height: 100%;
     margin-top: -4px;
-    margin-left: -41px;
+    margin-left: -100%;
+    margin-right: -100%;
     background: linear-gradient(90deg, 
         rgba(255, 255, 255, 0.05) 0%,
         rgba(255, 255, 255, 0.05) 30%,
@@ -472,8 +482,8 @@ body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-typ
 
 .titlebar .titlebar-text::after {
     z-index: 5;
-    opacity: 0.7;
-    content: " - https://tmz.io/sodalite v0.8.3";
+    opacity: 0.5;
+    content: " - https://tmz.io/sodalite v0.8.4";
 }
 
 /* status bar */

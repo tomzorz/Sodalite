@@ -49,6 +49,10 @@ These can be found in the `snippets` folder of the repository.
 
 ## Changelog
 
+**0.8.4**
+- fixed file explorer header blur missing while there's an active file highlight #24
+- fixed left and right sidebar buttons on mac os
+
 **0.8.3**
 - fixed "All Properties" and "Outline" blur-behind effects #25
 - fixed active file highlight effect missing #26
