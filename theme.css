@@ -1,361 +1,398 @@
-:root {
+/*
+ * Sodalite for Obsidian, https://github.com/tomzorz/Sodalite
+ *
+ * Obsidian exposes most of its look as CSS variables, so the theme sets those
+ * first and only reaches for selectors where no variable exists.
+ */
+
+/* tokens */
+
+.theme-dark {
     --sdlt-accent: #8BA4CC;
     --sdlt-accent-muted: #304F80;
-    --sdlt-accent-muted-transparent: rgba(48, 79, 128, 0.3);
-    --sdlt-accent-muted-selection: rgba(48, 79, 128, 0.99);
-    --sdlt-text-on-accent: #000000;
     --sdlt-text-muted: #cacaca;
     --sdlt-text-faint: #909090;
-
-    /* Sizing */
-    --sdlt-header-height: 48px;
-    --sdlt-markdown-header-height: 56px;
-    --sdlt-ribbon-width: 48px;
-
-    /* Gradients */
-    --sdlt-gradient-base: linear-gradient(135deg, var(--sdlt-base-bg-start), var(--sdlt-base-bg-end));
-    --sdlt-gradient-content: linear-gradient(135deg, var(--sdlt-content-bg-start), var(--sdlt-content-bg-end));
-    --sdlt-gradient-subtle: linear-gradient(160deg, transparent, rgba(255, 255, 255, 0.02));
-
-    /* Overlay colors */
-    --sdlt-overlay-bg: rgba(255, 255, 255, 0.05);
-    --sdlt-overlay-border: rgba(255, 255, 255, 0.08);
-    --sdlt-shadow-active: 0 0 3px 1px rgba(0, 0, 0, 0.5);
-
-    /* Semantic colors */
-    --sdlt-tag-indicator: #caca00;
-    --sdlt-graph-line: #404050;
-    --sdlt-graph-line-highlight: #507090;
-    --sdlt-search-border: #404040;
-
+    --sdlt-border: #1A1F28;
     --sdlt-base-bg-start: #202028;
     --sdlt-base-bg-end: #1B2020;
     --sdlt-content-bg-start: #222832;
-    --sdlt-content-bg-start-transparent: rgba(34, 40, 50, 0.3);
     --sdlt-content-bg-end: #212223;
-    --sdlt-content-bg-end-transparent: rgba(33, 34, 35, 0.3);
-    --sdlt-border: #1A1F28;
+    --sdlt-overlay-bg: rgba(255, 255, 255, 0.05);
+    --sdlt-overlay-border: rgba(255, 255, 255, 0.08);
+    --sdlt-tag-indicator: #caca00;
+    --sdlt-search-border: #404040;
+    --sdlt-heading-font: "Futura Md BT", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    --sdlt-titlebar-height: 24px;
+    --sdlt-note-header-height: 56px;
+    --sdlt-nav-header-height: var(--header-height);
+    --sdlt-tree-inset: 4px;
+
+    --sdlt-gradient-base: linear-gradient(135deg, var(--sdlt-base-bg-start), var(--sdlt-base-bg-end));
+    --sdlt-gradient-content: linear-gradient(135deg, var(--sdlt-content-bg-start), var(--sdlt-content-bg-end));
+    --sdlt-gradient-glass: linear-gradient(135deg,
+        color-mix(in srgb, var(--sdlt-content-bg-start) 30%, transparent),
+        color-mix(in srgb, var(--sdlt-content-bg-end) 30%, transparent));
+    --sdlt-gradient-subtle: linear-gradient(160deg, transparent, rgba(255, 255, 255, 0.02));
+    --sdlt-gradient-sheen: linear-gradient(160deg, transparent, rgba(255, 255, 255, 0.05));
+    --sdlt-shadow-active: 0 0 3px 1px rgba(0, 0, 0, 0.5);
+    --sdlt-shadow-popover: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+    --sdlt-shadow-modal: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+
+    /* Obsidian: icons a notch larger than stock */
+    --icon-xs: 16px;
+    --icon-s: 18px;
+    --icon-m: 18px;
+    --icon-l: 20px;
+
+    /* Obsidian: layout */
+    --header-height: 48px;
+    --ribbon-width: 48px;
+    --file-line-width: 100%;
+    --file-header-justify: start;
+    --file-header-border: 2px solid var(--sdlt-border);
+
+    /* Obsidian: let the Sodalite gradients show through the chrome */
+    --titlebar-background: transparent;
+    --titlebar-background-focused: transparent;
+    --ribbon-background: transparent;
+    --ribbon-background-collapsed: transparent;
+    --tab-container-background: transparent;
+    --sidebar-tab-container-background: transparent;
+    --file-header-background: transparent;
+    --file-header-background-focused: transparent;
+    --status-bar-background: transparent;
+    --status-bar-border-width: 0;
+    --status-bar-radius: 0;
+    --status-bar-font-size: 12px;
+
+    /* Obsidian: square tabs; the active one keeps the note background, so it joins the note below */
+    --tab-outline-width: 2px;
+    --tab-outline-color: var(--sdlt-border);
+    --tab-radius-active: 0;
+    --tab-curve: 0px;
+    --tab-text-color: var(--sdlt-text-faint);
+    --tab-text-color-focused: var(--sdlt-text-muted);
+    --tab-text-color-active: white;
+    --tab-text-color-focused-active: white;
+    --tab-text-color-focused-active-current: white;
+
+    /* Obsidian: lists */
+    --nav-item-color: var(--sdlt-text-muted);
+    --nav-tag-radius: 0;
+    --nav-tag-color: var(--sdlt-text-muted);
+
+    /* Obsidian: popovers */
+    --menu-background: rgba(0, 0, 0, 0.3);
+    --menu-backdrop-filter: blur(12px);
+    --menu-border-width: 2px;
+    --menu-border-color: var(--sdlt-border);
+    --menu-radius: 8px;
+    --menu-shadow: var(--sdlt-shadow-popover);
+    --suggestion-background: var(--menu-background);
+    --suggestion-backdrop-filter: var(--menu-backdrop-filter);
+    --tooltip-background: rgba(0, 0, 0, 0.4);
+    --tooltip-font-size: 1em;
+    --tooltip-padding: 6px 12px;
+    --notice-background: color-mix(in srgb, var(--sdlt-accent-muted) 30%, transparent);
+    --prompt-background: transparent;
+
+    /* Obsidian: content */
+    --text-selection: var(--sdlt-accent-muted);
+    --callout-radius: 0;
+    --callout-padding: 18px;
+    --graph-line: #404050;
+
+    /* Obsidian: a thin scrollbar line that widens while the pointer is over its pane */
+    --scrollbar-width: 6px;
+    --scrollbar-height: 6px;
+    --scrollbar-radius: 0;
+    --scrollbar-border-width: 0 0 0 4px;
+}
+
+.is-tablet.theme-dark {
+    --titlebar-background: transparent;
+    --titlebar-background-focused: transparent;
+}
+
+.mod-windows,
+.mod-linux {
+    /* the window buttons live in the title strip, so tabs need no room for them */
+    --frame-right-space: 0px;
+}
+
+.workspace-leaf-content:hover,
+.modal-container,
+.modal {
+    --scrollbar-border-width: 0;
 }
 
 /* background */
 
 body {
     background: var(--sdlt-gradient-base);
-
-    --file-header-justify: left;
-    --file-line-width: 100%;
 }
 
-.workspace-tabs,
-.workspace-ribbon,
-.workspace-ribbon.is-collapsed,
-.workspace-ribbon.mod-left.is-collapsed,
-.workspace-ribbon.mod-right.is-collapsed,
-.titlebar,
-.workspace-tabs .workspace-leaf,
-.workspace-tab-header-container,
-.workspace-tab-container-before,
-.workspace-tab-container-before.is-before-active,
-.workspace-tab-container-before.is-before-active .workspace-tab-header-inner,
-.workspace-tab-container-after,
-.workspace-tab-container-after.is-after-active,
-.workspace-tab-container-after.is-after-active .workspace-tab-header-inner,
-.workspace-tab-header.is-before-active,
-.workspace-tab-header.is-before-active .workspace-tab-header-inner,
-.workspace-tab-header.is-after-active,
-.workspace-tab-header.is-after-active .workspace-tab-header-inner,
-.workspace-leaf .view-header-title-container:after,
-.workspace-leaf.mod-active .view-header-title-container:after,
-.status-bar,
-::-webkit-scrollbar {
-    background: transparent;
-    border: 0;
+/*
+ * title strip: a 24px band above the workspace with the window buttons; the main window also shows its title
+ * and the status bar there. The settings window keeps Obsidian's own title bar, without a title.
+ */
+
+body:not(.is-mobile) .workspace {
+    padding-top: var(--sdlt-titlebar-height);
 }
 
-/* workspace */
-
-.workspace-tab-header-container {
-    height: var(--sdlt-header-height);
-    border-bottom: 2px solid var(--sdlt-border);
-    background: var(--sdlt-gradient-subtle);
+body.is-frameless.is-hidden-frameless:not(.is-popout-modal) .titlebar {
+    height: var(--sdlt-titlebar-height);
+    -webkit-app-region: drag;
 }
 
-.workspace-ribbon {
-    width: var(--sdlt-ribbon-width);
+body.is-frameless.is-hidden-frameless:not(.is-popout-window, .is-popout-modal) .titlebar .titlebar-text {
+    display: block;
+    inset-inline-start: 64px;
+    width: auto;
+    height: auto;
+    padding: 0;
+    line-height: var(--sdlt-titlebar-height);
+    font-weight: normal;
 }
 
-.side-dock-ribbon {
-    flex: 0 0 48px;
+body:not(.is-popout-window, .is-popout-modal) .titlebar-text::after {
+    content: " - https://tmz.io/sodalite v0.10.0";
+    opacity: 0.5;
 }
 
-.workspace-ribbon.mod-right {
-    position: absolute;
-    right: 0;
+body.is-popout-modal .titlebar-text {
+    display: none;
 }
 
-.workspace-ribbon.is-collapsed {
-    border: none !important;
+.status-bar {
+    inset-block: 0 auto;
+    inset-inline-end: 136px;
 }
 
-.workspace-ribbon-collapse-btn {
-    margin-top: -4px;
+.mod-macos .status-bar {
+    inset-inline-end: 0;
 }
 
-.workspace-tab-header.is-active {
-    color: white;
+@media (max-width: 1280px) {
+    .status-bar {
+        display: none;
+    }
 }
 
-/* .workspace-tab-header-inner-icon {
-    margin-top: 7px;
-} */
+/* ribbon */
 
-.workspace-leaf-resize-handle {
-    background: transparent;
+.workspace-ribbon.mod-primary {
+    border-inline-end: 0;
 }
 
-.workspace {
-    padding-top: 24px;
+.workspace-ribbon.mod-primary::before {
+    display: none;
 }
 
-.workspace-ribbon.mod-left {
-    margin-top: var(--sdlt-header-height);
+:is(.mod-windows, .mod-linux) .workspace-ribbon .sidebar-toggle-button {
+    top: var(--sdlt-titlebar-height);
 }
+
+.side-dock-ribbon-action,
+.workspace-tab-header,
+.nav-action-button {
+    --icon-color: var(--sdlt-text-muted);
+    --icon-color-hover: var(--sdlt-text-muted);
+}
+
+/* panes: one gradient across all of them, rounded where the left sidebar starts */
 
 .workspace-split {
-    background: var(--sdlt-gradient-content);
-    background-attachment: fixed;
+    background: var(--sdlt-gradient-content) fixed;
 }
 
-.workspace-split.mod-left-split {
-    border-top-left-radius: 8px;
-    border-left: 2px solid var(--sdlt-border);
+.workspace > .workspace-split {
     border-top: 2px solid var(--sdlt-border);
 }
 
-.workspace-split.mod-left-split.is-collapsed + .workspace-split.mod-root {
-    border-top-left-radius: 8px;
+.workspace-split.mod-primary-split {
+    border-inline-start: 2px solid var(--sdlt-border);
+    border-start-start-radius: 8px;
 }
 
-.workspace-split.mod-root, .workspace-split.mod-right-split {
-    border-top: 2px solid var(--sdlt-border);
+.workspace-split.mod-primary-split.is-sidedock-collapsed + .workspace-split.mod-root {
+    border-start-start-radius: 8px;
+}
+
+.workspace-split.mod-root {
+    /* note tabs: a flat tint across the whole tab on hover, separators a step darker than stock */
+    --tab-background-hover: var(--sdlt-overlay-bg);
+    --tab-inner-background-hover: transparent;
+    --tab-divider-color: var(--background-modifier-border);
+    border-inline: 2px solid var(--sdlt-border);
 }
 
 .workspace-split .workspace-tabs {
     border-bottom: 2px solid var(--sdlt-border);
 }
 
-.workspace-split.mod-root {
-    border-left: 2px solid var(--sdlt-border);
-    border-right: 2px solid var(--sdlt-border);
-}
-
-.workspace-split .nav-header {
-    height: var(--sdlt-header-height);
-    padding: 4px 6px;
-    border-bottom: 2px solid var(--sdlt-border);
-}
-
-.workspace-tabs {
-    padding-right: 0;
-}
-
-.nav-action-button {
-    margin-top: 4px;
-}
-
-.workspace-leaf-content .nav-header + * {
-    padding: 6px 0;
-}
-
-.workspace-tab-container-before {
-    width: 6px;
-}
-
-/* box-shadow: 0 0 4px 0px rgba(0,0,0,0.2); */
-
-.workspace-split.mod-root .view-header {
-    border-bottom: 2px solid var(--sdlt-border) !important;
-}
-
-.workspace-split.mod-root .view-content {
-    background: transparent;
-}
-
-.workspace-split.mod-root > .workspace-leaf .view-header-title-container:after {
-    background: transparent !important;
-}
-
-.workspace-leaf-content .view-actions {
-    margin-right: 12px;
-}
-
-.workspace-leaf-content .view-actions .view-action svg {
-    margin-top: 4px;
-}
-
-body:not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .view-actions .view-action svg,
-body:not(.is-mobile) .workspace-leaf-content[data-type="bases"] .view-actions .view-action svg {
-    margin-top: 8px;
-}
-
-.workspace > .workspace-split {
-    padding-bottom: 0;
-}
-
-
-.workspace-leaf-content .view-header {
-    background: transparent !important;
-    border: none !important;
-}
-
-/* scroll */
-
-body:not(.native-scrollbars) ::-webkit-scrollbar {
-    width: 6px;
-}
-
-body:not(.native-scrollbars) .workspace-leaf-content .nav-header + *:hover::-webkit-scrollbar-thumb {
-    border: none;
-    /* background-color: var(--scrollbar-thumb-bg); */
-}
-
-body:not(.native-scrollbars) .workspace-leaf-content .view-content:hover *::-webkit-scrollbar-thumb {
-    border: none;
-    /* background-color: var(--scrollbar-thumb-bg); */
-}
-
-body:not(.native-scrollbars) ::-webkit-scrollbar-thumb {
-    border-radius: 0;
-    background-clip: content-box;
-    border-left: 4px solid transparent;
-    /* background-color: var(--sdlt-border); */
-    transition: background-color 0.2s;
-}
-
-body:not(.native-scrollbars) .modal-container ::-webkit-scrollbar-thumb {
-    /* background-color: white; */
-    border: none;
-}
-
-/* view header wrangling */
-
-.view-header {
-    height: var(--sdlt-header-height);
-    max-height: var(--sdlt-header-height);
-    min-height: var(--sdlt-header-height);
-}
-
-.view-header-title-parent {
-    display: none;
-}
-
-/* mod top buttons */
-
-.mod-windows .sidebar-toggle-button.mod-left {
-    top: 28px;
-}
-
-.mod-macos.is-hidden-frameless:not(.is-popout-window) .sidebar-toggle-button.mod-right {
-    position: relative;
+body:not(.is-mobile) .workspace-split.mod-primary-split .workspace-sidedock-vault-profile {
     background-color: transparent;
 }
 
-.workspace-ribbon.mod-left:before {
-    display: none;
-}
-
-.is-hidden-frameless:not(.is-fullscreen) .titlebar-button-container.mod-right,
-.is-hidden-frameless:not(.is-fullscreen) .titlebar-button-container.mod-left,
-.is-hidden-frameless:not(.is-fullscreen).is-focused .titlebar-button-container.mod-right,
-.is-hidden-frameless:not(.is-fullscreen).is-focused .titlebar-button-container.mod-left {
+/* the note area keeps Obsidian's darker note background on purpose; only the sidebars show the gradient */
+.mod-sidedock .workspace-tabs .workspace-leaf {
     background-color: transparent;
-}
-
-.titlebar-button {
-    height: 24px;
 }
 
 /* tabs */
 
-.mod-root .workspace-tab-header {
-    border-radius: 0;
+.workspace-tab-header-container {
+    background-image: var(--sdlt-gradient-subtle);
+}
+
+.workspace-tab-header-container .workspace-tab-header.is-active {
+    box-shadow: none;
+}
+
+/* Obsidian outlines a hovered tab and draws a line along its bottom */
+.workspace-tab-header-container .workspace-tab-header:not(.is-active):hover {
+    box-shadow: none;
 }
 
 .mod-root .workspace-tab-header-container-inner {
-    padding: 0;
-    border-radius: 0;
     margin: 0;
+    padding: 0;
 }
 
-.mod-root .workspace-tab-header-container-inner::before, .mod-root .workspace-tab-header-container-inner::after,
-.workspace-split.mod-root .workspace-tab-header.is-active::before, .workspace-split.mod-root .workspace-tab-header.is-active::after {
-    display: none;
+.mod-root .workspace-tab-header-container .workspace-tab-header {
+    padding-inline-start: 8px;
 }
 
-.workspace .mod-root .workspace-tab-header-container-inner .workspace-tab-header {
-    padding-left: 8px;
+/* separators between note tabs run the full height of the tab instead of 1em in the middle */
+.workspace .mod-root .workspace-tab-header-inner::after {
+    top: 0;
+    height: 100%;
 }
 
-.workspace-tab-header.is-active {
-    box-shadow: none;
-    background: var(--sdlt-base-bg-start);
-}
+/* sidebar toolbars */
 
-.workspace-tab-header-new-tab {
-    margin-left: 8px;
+.workspace-split .nav-header {
+    padding: 4px 6px;
+    border-bottom: 2px solid var(--sdlt-border);
 }
-
-/* nav */
 
 .nav-header .nav-buttons-container {
     justify-content: flex-start;
 }
 
+/* the button row fills the header height minus padding and border, so the buttons sit centered */
+.workspace-split .nav-header .nav-buttons-container {
+    min-height: calc(var(--header-height) - 10px);
+    align-items: center;
+}
+
+/* the search filter adds one input row (plus its 4px margins) under the buttons; floating content moves down with it */
+body:not(.is-mobile) .workspace-leaf-content:has(> .nav-header > .search-input-container:not([style*="display: none"]), > .view-content > .nav-header > .search-input-container:not([style*="display: none"])) {
+    --sdlt-nav-header-height: calc(var(--header-height) + var(--input-height) + 8px);
+}
+
+/* note header, scaled up to match an h1 */
+
+.view-header-title-parent {
+    display: none;
+}
+
+/* taller than the sidebar toolbars beside it, so it drops the bottom border rather than end at a different line */
+body:not(.is-mobile) .workspace-leaf-content:is([data-type="markdown"], [data-type="bases"]) > .view-header {
+    height: var(--sdlt-note-header-height);
+    border-bottom: 0;
+}
+
+/* centering puts the cap height level with the buttons; most titles are lowercase, so lift the x-height toward them */
+body:not(.is-mobile) .workspace-leaf-content:is([data-type="markdown"], [data-type="bases"]) > .view-header .view-header-title {
+    font-family: var(--sdlt-heading-font);
+    font-size: 38px;
+    translate: 0 -0.08em;
+}
+
+/* scroll-below: headers float over their content as frosted glass */
+
+/* most sidebar toolbars sit directly in the pane; the backlinks one sits inside its view-content */
+body:not(.is-mobile) .workspace-leaf-content > .nav-header,
+body:not(.is-mobile) .workspace-leaf-content > .view-content > .nav-header,
+body:not(.is-mobile) .workspace-leaf-content:is([data-type="markdown"], [data-type="bases"], [data-type="graph"]) > .view-header {
+    position: absolute;
+    z-index: var(--layer-cover);
+    width: 100%;
+    background-image: var(--sdlt-gradient-glass);
+    background-attachment: fixed;
+    backdrop-filter: blur(18px);
+}
+
+/* content starts as far below a floating header as it sits from the pane's sides */
+body:not(.is-mobile) .workspace-leaf-content > .nav-header ~ :last-child,
+body:not(.is-mobile) .workspace-leaf-content > .view-content > .nav-header ~ :last-child {
+    padding-top: calc(var(--sdlt-nav-header-height) + var(--size-4-3));
+}
+
+body:not(.is-mobile) .workspace-leaf-content > .nav-header ~ .nav-files-container {
+    padding-top: calc(var(--sdlt-nav-header-height) + var(--sdlt-tree-inset));
+}
+
+body:not(.is-mobile) .workspace-leaf-content > .nav-header ~ :last-child::-webkit-scrollbar-track,
+body:not(.is-mobile) .workspace-leaf-content > .view-content > .nav-header ~ :last-child::-webkit-scrollbar-track {
+    margin-top: var(--sdlt-nav-header-height);
+}
+
+body:not(.is-mobile) .mod-root .workspace-leaf-content[data-type="markdown"] {
+    --file-margins: calc(var(--sdlt-note-header-height) + 8px) var(--file-margins-x) var(--file-margins-y);
+}
+
+body:not(.is-mobile) .workspace-leaf-content[data-type="markdown"] :is(.cm-scroller, .markdown-preview-view)::-webkit-scrollbar-track {
+    margin-top: var(--sdlt-note-header-height);
+}
+
+body:not(.is-mobile) .workspace-leaf-content[data-type="bases"] .view-content {
+    padding-top: calc(var(--sdlt-note-header-height) + 8px);
+}
+
+body:not(.is-mobile) .workspace-leaf-content[data-type="graph"] .graph-controls {
+    top: var(--header-height);
+}
+
+/* properties */
+
+.metadata-container {
+    margin-block-end: 1rem;
+}
+
+/* backlinks: Obsidian pads the top far less than the sides */
+
+.backlink-pane {
+    padding-top: var(--size-4-3);
+}
+
 /* file tree */
 
-/* make links slightly lighter + accented */
-
-.nav-file-title, .nav-folder-title {
-    --text-muted: var(--sdlt-text-muted);
-    min-width: calc(100% - 12px);
-    border-radius: 0px;
-}
-
-.tree-item-self {
-    --text-muted: var(--sdlt-text-muted);
-    --interactive-accent: var(--sdlt-accent-muted);
-    --text-on-accent: var(--sdlt-text-on-accent);
-}
-
-.nav-file-title:hover, .nav-folder-title:hover {
-
-}
-
-.nav-files-container .nav-folder.mod-root {
-    padding: 0 4px;
-}
-
-body:not(.is-phone) .workspace-leaf.mod-active .tree-item-self.has-focus {
-    box-shadow: none;
+.nav-files-container {
+    --nav-item-radius: 0;
+    padding-inline: var(--sdlt-tree-inset);
 }
 
 .nav-file-title.is-active {
-    margin: 4px 0px;
-    background: var(--sdlt-overlay-bg);
+    --nav-item-background-active: var(--sdlt-overlay-bg);
+    --nav-item-weight-active: bold;
+    margin-block: 4px;
     border: 1px solid var(--sdlt-overlay-border);
     box-shadow: var(--sdlt-shadow-active);
-    font-weight: bold;
 }
 
-.nav-file-title.is-active:hover {
-    font-weight: bold !important;
+/* the active file is marked already; keyboard focus on any other item keeps Obsidian's ring */
+body:not(.is-phone) .workspace-leaf.mod-active .nav-file-title.is-active.has-focus {
+    box-shadow: var(--sdlt-shadow-active);
 }
 
 .nav-file-tag {
-    border-radius: 0;
     font-size: 10px;
-    padding: 0px 2px;
-    color: var(--sdlt-text-muted);
+    padding: 0 2px;
 }
 
 .nav-file-tag::before {
@@ -363,30 +400,43 @@ body:not(.is-phone) .workspace-leaf.mod-active .tree-item-self.has-focus {
     color: var(--sdlt-tag-indicator);
 }
 
-/* make the buttons slightly lighter + accented */
-
-.side-dock-ribbon-action {
-    --text-faint: var(--sdlt-text-faint);
-    --text-muted: var(--sdlt-text-muted);
+.nav-folder .nav-folder-title-content::before {
+    content: '📂 ';
 }
 
-.workspace-tab-header {
-    --text-faint: var(--sdlt-text-faint);
-    --text-muted: var(--sdlt-text-muted);
+.nav-folder.is-collapsed .nav-folder-title-content::before {
+    content: '📁 ';
 }
 
-.nav-action-button {
-    --text-faint: var(--sdlt-text-faint);
-    --text-muted: var(--sdlt-text-muted);
-    --interactive-accent: var(--sdlt-accent-muted);
-    --text-on-accent: var(--sdlt-text-on-accent);
-    --text-accent: var(--sdlt-accent-muted);
+.workspace-leaf-content[data-type="file-explorer"] .nav-file .nav-file-title-content::before {
+    content: '📝 ';
 }
 
-/* change flash animation */
+/*
+ * Give a path its own icon with a snippet like this one:
+ * .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path^="00"] .nav-file-title-content::before { content: '⚡ '; }
+ */
+
+/* the vault name heads the tree only in the mobile drawer */
+
+.nav-folder.mod-root > .nav-folder-title .nav-folder-title-content {
+    font-family: var(--sdlt-heading-font);
+    font-size: 22px;
+    padding-bottom: 10px;
+}
+
+.workspace-leaf-content[data-type="file-explorer"] .nav-folder.mod-root > .nav-folder-title .nav-folder-title-content::before {
+    content: '🏠 ';
+}
+
+/* a light sweeping across a file when Obsidian reveals it */
 
 .is-flashing {
     mix-blend-mode: normal;
+}
+
+.is-flashing.nav-file-title {
+    overflow: clip;
 }
 
 .is-flashing.nav-file-title::after {
@@ -396,406 +446,139 @@ body:not(.is-phone) .workspace-leaf.mod-active .tree-item-self.has-focus {
     width: 200%;
     height: 100%;
     margin-top: -4px;
-    margin-left: -100%;
-    margin-right: -100%;
-    background: linear-gradient(90deg, 
+    margin-inline: -100%;
+    background: linear-gradient(90deg,
         rgba(255, 255, 255, 0.05) 0%,
         rgba(255, 255, 255, 0.05) 30%,
         rgba(255, 255, 255, 0.3) 50%,
         rgba(255, 255, 255, 0.05) 70%,
         rgba(255, 255, 255, 0.05) 100%);
-    animation: flashing 3s infinite;
-    animation-timing-function: linear;
     background-size: 200px 100%;
+    animation: sdlt-flashing 3s linear infinite;
 }
 
-@keyframes flashing {
-    0% {
-        background-position: 0% 0;
+@keyframes sdlt-flashing {
+    from {
+        background-position: 0 0;
     }
-    100%{
+
+    to {
         background-position: 400px 0;
     }
 }
 
-/* frame */
+/* popovers */
 
-.mod-windows {
-    --frame-right-space: 0;
-}
-
-/* sidebar toggle move */
-
-.workspace-tabs.mod-top-right-space .workspace-tab-header-container {
-    padding-right: 8px !important;
-}
-
-/* change note header to match h1 */
-
-body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .view-header,
-body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="bases"] .view-header {
-    height: var(--sdlt-markdown-header-height);
-}
-
-body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .view-header .view-header-title,
-body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="bases"] .view-header .view-header-title {
-    font-size: 38px;
-    line-height: var(--sdlt-markdown-header-height);
-    font-family: "Futura Md BT", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
-
-body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .view-header .view-header-icon,
-body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="bases"] .view-header .view-header-icon {
-    padding-top: 17px;
-    width: var(--sdlt-ribbon-width);
-    text-align: center;
-}
-
-/* sliding panes fix */
-
-.plugin-sliding-panes .workspace-leaf-content[data-type="markdown"],
-.plugin-sliding-panes .workspace-leaf-content[data-type="bases"] {
-    background: var(--sdlt-gradient-content);
-    background-attachment: fixed;
-}
-
-/* change tree header */ 
-
-.nav-folder.mod-root > .nav-folder-title .nav-folder-title-content {
-    font-size: 22px;
-    padding-bottom: 10px;
-    font-family: "Futura Md BT", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
-
-/* title bar */
-
-.titlebar {
-    -webkit-app-region: drag !important;
-}
-
-.titlebar .titlebar-text, 
-.is-hidden-frameless .titlebar .titlebar-text {
-    display: block;
-    text-align: left;
-    width: auto;
-    left: 64px;
-    line-height: 24px;
-    z-index: 5;
-    font-weight: normal;
-    padding: 0;
-}
-
-.mod-macos .titlebar .titlebar-text {
-    left: 136px;
-}
-
-.titlebar .titlebar-text::after {
-    z-index: 5;
-    opacity: 0.5;
-    content: " - https://tmz.io/sodalite v0.9.0";
-}
-
-/* status bar */
-
-.status-bar {
-    bottom: auto;
-    top: 0;
-    right: 136px;
-    font-size: 12px;
-}
-
-.mod-macos .status-bar {
-    right: 0;
-}
-
-@media only screen and (max-width: 1280px) {
-    .status-bar {
-        display: none;
-    }
-}
-
-/* buttons */
-
-button.mod-cta {
-    background: var(--sdlt-accent-muted);
-}
-
-button.mod-cta:hover {
-    background: var(--sdlt-accent);
-}
-
-/* popups */
-
-.suggestion-container, .menu {
+.menu {
     margin-top: 6px;
-    border-radius: 8px;
-    background: 
-        rgba(0,0,0,0.3)
-        linear-gradient(160deg, transparent, rgba(255, 255, 255, 0.02));
-    border: 2px solid var(--sdlt-border);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 3.2px 7.2px 0 rgba(0,0,0,.132),0 .6px 1.8px 0 rgba(0,0,0,.108);
+    background-image: var(--sdlt-gradient-subtle);
 }
 
-/* modals */
+.suggestion-container {
+    margin-top: 6px;
+    border: var(--menu-border-width) solid var(--menu-border-color);
+    border-radius: var(--menu-radius);
+    background-image: var(--sdlt-gradient-subtle);
+    box-shadow: var(--menu-shadow);
+}
+
+.tooltip,
+.notice {
+    background-image: var(--sdlt-gradient-sheen);
+    backdrop-filter: blur(18px);
+}
+
+/* modals, and settings, which 1.14 opens in a window of its own */
 
 body:not(.is-mobile) .modal-container .modal-bg {
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(12px);
 }
 
-.modal-container .modal {
-    background: var(--sdlt-gradient-base);
-    box-shadow: 0 6.4px 14.4px 0 rgba(0,0,0,.132),0 1.2px 3.6px 0 rgba(0,0,0,.108);
-    overflow: visible !important;
+.modal {
+    --modal-sidebar-background: transparent;
+    background-image: var(--sdlt-gradient-base);
+    box-shadow: var(--sdlt-shadow-modal);
 }
 
-.modal-container .modal .modal-content {
-    padding: 0;
-}
-
-.modal-container .modal .modal-title {
-    font-family: "Futura Md BT", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+.modal .modal-title {
+    font-family: var(--sdlt-heading-font);
     font-size: 32px;
 }
 
-.modal-container .modal .vertical-tab-content {
-    background: transparent;
-    padding-top: 20px;
+.vertical-tab-content-container {
+    background: var(--sdlt-gradient-content) fixed;
+    border-inline-start: 2px solid var(--sdlt-border);
 }
 
-.modal-container .modal .vertical-tab-header {
-    background: transparent;
-    padding-top: 0;
+.vertical-tab-content {
+    background-color: transparent;
 }
 
-.modal-container .modal .vertical-tab-content-container {
-    background: var(--sdlt-gradient-content);
-    padding: 0;
-    border-left: 2px solid var(--sdlt-border);
-}
-
-.modal-container .modal .vertical-tab-nav-item {
-    background: transparent;
-}
-
-.modal-container .modal .vertical-tab-nav-item.is-active {
-    background: var(--sdlt-overlay-bg);
-    border: 1px solid var(--sdlt-overlay-border);
-    box-shadow: var(--sdlt-shadow-active);
-    border-radius: 6px;
-    margin: 0 8px;
+body:not(.is-phone) .vertical-tab-nav-item.is-active {
+    background-color: var(--sdlt-overlay-bg);
+    box-shadow: 0 0 0 1px var(--sdlt-overlay-border), var(--sdlt-shadow-active);
     font-weight: bold;
 }
 
-.modal-container .modal .modal-close-button {
-    right: -40px;
-}
-
-.modal-container .prompt {
-    background: transparent;
-}
-
-.modal-container .prompt .suggestion-item.is-selected {
+.prompt .suggestion-item.is-selected {
     background: linear-gradient(160deg, transparent, rgba(255, 255, 255, 0.1));
 }
 
-/* tooltips */
+/* buttons and toggles */
 
-.tooltip {
-    background: 
-        rgba(0,0,0,0.4)
-        linear-gradient(160deg, transparent, rgba(255,255,255,0.05));
-    backdrop-filter: blur(18px);
-    font-size: 1em;
-    padding: 6px 12px;
+button.mod-cta,
+.checkbox-container.is-enabled {
+    --interactive-accent: var(--sdlt-accent-muted);
+    --interactive-accent-hover: var(--sdlt-accent);
 }
 
-.tooltip .tooltip-arrow {
-    backdrop-filter: blur(18px);
-    border-bottom: 5px solid rgba(0,0,0,0.4);
-}
-
-.tooltip.mod-right .tooltip-arrow {
-    border-right: 5px solid rgba(0,0,0,0.4);
-}
-
-.tooltip.mod-left .tooltip-arrow {
-    border-left: 5px solid rgba(0,0,0,0.4);
-}
-
-.tooltip.mod-top .tooltip-arrow {
-    border-top: 5px solid rgba(0,0,0,0.4);
-}
-
-/* notice */
-
-.notice-container .notice {
-    background: 
-        var(--sdlt-accent-muted-transparent)
-        linear-gradient(160deg, transparent, rgba(255,255,255,0.05));
-    backdrop-filter: blur(18px);
-}
-
-/* content */
-
-.view-content {
-    height: 100%;
-}
-
-/* selection */
-
-::selection, .CodeMirror-line::selection, .CodeMirror-line > span::selection, .CodeMirror-line > span > span::selection, .CodeMirror-selected, .CodeMirror-focused .CodeMirror-selected {
-    background: var(--sdlt-accent-muted-selection);
-    color: white;
-}
-
-/* scroll-below */
-
-body:not(.is-mobile) .workspace-leaf-content > .nav-header,
-body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content > .view-header {
-    position: absolute;
-    z-index: 90;
-    width: 100%;
-    backdrop-filter: blur(18px);
-    background: 
-        linear-gradient(135deg, var(--sdlt-content-bg-start-transparent),
-        var(--sdlt-content-bg-end-transparent)) !important;
-    background-attachment: fixed !important;
-}
-
-body:not(.is-mobile) .workspace-leaf-content > .nav-header + * {
-    padding-top: calc(var(--sdlt-header-height) + 6px);
-}
-
-body:not(.is-mobile) .workspace-leaf-content > .nav-header + *::-webkit-scrollbar-track {
-    margin-top: var(--sdlt-header-height);
-}
-
-body:not(.is-mobile) .workspace-leaf-content[data-type="bookmarks"] .view-content,
-body:not(.is-mobile) .workspace-leaf-content[data-type="outline"] .view-content,
-body:not(.is-mobile) .workspace-leaf-content[data-type="all-properties"] .view-content {
-    padding-top: var(--sdlt-markdown-header-height);
-}
-
-body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .markdown-preview-sizer {
-    padding-top: var(--sdlt-markdown-header-height);
-}
-
-body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .markdown-preview-view::-webkit-scrollbar-track {
-    margin-top: var(--sdlt-markdown-header-height);
-}
-
-body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .CodeMirror-scroll {
-    padding-top: var(--sdlt-markdown-header-height);
-}
-
-body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .CodeMirror-vscrollbar::-webkit-scrollbar-track {
-    margin-top: var(--sdlt-markdown-header-height);
-}
-
-body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .cm-scroller {
-    padding-top: var(--sdlt-markdown-header-height);
-}
-
-body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .cm-scroller::-webkit-scrollbar-track {
-    margin-top: var(--sdlt-markdown-header-height);
-}
-
-body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="bases"] .view-content {
-    padding-top: calc(var(--sdlt-markdown-header-height) + 8px);
-}
-
-body:not(.plugin-sliding-panes):not(.is-mobile) .workspace-leaf-content[data-type="bases"] .bases-view::-webkit-scrollbar-track {
-    margin-top: calc(var(--sdlt-markdown-header-height) + 8px);
-}
-
-/* fix search with scroll below */
+/* find in note */
 
 body:not(.is-mobile) .workspace-leaf-content .document-search-container {
     position: absolute;
-    top: 64px;
-    right: 0;
-    background: transparent;
-    backdrop-filter: blur(18px);
-    background: 
-        linear-gradient(135deg, var(--sdlt-content-bg-start-transparent),
-        var(--sdlt-content-bg-end-transparent)) !important;
-    background-attachment: fixed !important;
+    top: calc(var(--sdlt-note-header-height) + 8px);
+    inset-inline-end: 0;
     min-width: 400px;
     padding: 12px;
     border: 1px solid var(--sdlt-search-border);
-}
-
-.document-search-close-button {
-    padding: 0;
-    margin-top: -4px;
-    margin-right: -8px;
-    margin-left: 8px;
+    background-image: var(--sdlt-gradient-glass);
+    background-attachment: fixed;
+    backdrop-filter: blur(18px);
 }
 
 /* graph */
 
 .graph-controls {
-    border-radius: 0 0 8px 0;
-    border: none;
-    border-right: 2px solid var(--sdlt-border);
-    border-bottom: 2px solid var(--sdlt-border);
     top: 0;
-    left: 0;
+    inset-inline-start: 0;
+    border: none;
+    border-inline-end: 2px solid var(--sdlt-border);
+    border-bottom: 2px solid var(--sdlt-border);
+    border-radius: 0 0 8px;
     background: var(--sdlt-gradient-subtle);
     backdrop-filter: blur(10px);
 }
 
-body:not(.is-mobile) .workspace-split.mod-root .graph-controls {
-    top: var(--sdlt-header-height);
+.graph-controls:not(.is-close) {
+    border-block-start-width: 0;
+    border-inline-start-width: 0;
 }
 
 .graph-controls.is-close {
-    background: var(--sdlt-gradient-subtle);
-    width: var(--sdlt-ribbon-width);
-}
-
-.graph-controls .setting-item-name {
-    --text-muted: var(--sdlt-text-muted);
+    width: var(--ribbon-width);
 }
 
 body.is-mobile .graph-controls {
-    background: var(--sdlt-gradient-content);
-    background-attachment: fixed;
+    background: var(--sdlt-gradient-content) fixed;
     backdrop-filter: none;
 }
 
-.graph-view.color-line {
-    color: var(--sdlt-graph-line);
-}
-
 .graph-view.color-line-highlight {
-    color: var(--sdlt-graph-line-highlight);
+    color: #507090;
 }
 
-/* preview frontmatter */ 
-
-.frontmatter-container {
-    background: var(--sdlt-gradient-subtle);
-    border-radius: 8px;
-    border: 1px solid var(--sdlt-overlay-bg);
-    margin-bottom: 20px;
-}
-
-/* side dock */
-
-.side-dock-settings {
-    margin-bottom: 0;
-}
-
-/* checkboxes */
-
-.setting-item-control .checkbox-container.is-enabled {
-    background: var(--sdlt-accent-muted);
-}
-
-/* sync icon */
+/* sync indicator: a glow runs along the title strip while a sync takes longer than half a second */
 
 .status-bar-item .status-bar-item-icon.sync-status-icon {
     position: relative;
@@ -807,110 +590,59 @@ body.is-mobile .graph-controls {
 }
 
 .status-bar-item .status-bar-item-icon.sync-status-icon::after {
+    content: ' ';
     display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
     width: 100%;
     height: 26px;
-    position: fixed;
-    content: ' ';
-    left: 0;
-    top: 0;
-    z-index: -1;
     pointer-events: none;
-    -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, black 20%, black 80%, transparent 100%);
 }
 
-/* .status-bar-item .status-bar-item-icon.sync-status-icon.mod-success::after {
-    background: linear-gradient(90deg, 
-        transparent 0%,
-        transparent 30%,
-        rgba(40, 255, 40, 0.2) 50%,
-        transparent 70%,
-        transparent 100%);
-    animation: sync-flashing-success 5s 1;
-    animation-timing-function: linear;
-    background-size: 500px 100%;
-} */
-
 .status-bar-item .status-bar-item-icon.sync-status-icon.mod-working::after {
-    background: linear-gradient(90deg, 
+    background: linear-gradient(90deg,
         transparent 0%,
         transparent 30%,
         rgba(40, 40, 255, 0.2),
         transparent 70%,
         transparent 100%);
-    animation: sync-flashing 5s infinite, sync-fadein 1s 1;
-    animation-timing-function: linear;
     background-size: 500px 100%;
     background-repeat: repeat-x;
+    animation: sdlt-sync-flashing 5s linear infinite, sdlt-sync-fadein 1s linear;
 }
 
-@keyframes sync-flashing {
-    0% {
-        background-position: 0% 0;
+@keyframes sdlt-sync-flashing {
+    from {
+        background-position: 0 0;
     }
-    100%{
+
+    to {
         background-position: 1000px 0;
     }
 }
 
-@keyframes sync-fadein {
-    0% {
-        opacity: 0;
-    }
+@keyframes sdlt-sync-fadein {
+    0%,
     50% {
         opacity: 0;
     }
-    100%{
+
+    100% {
         opacity: 1;
     }
 }
 
-/* collapse */
+/* selection */
 
-.CodeMirror-gutter.CodeMirror-linenumbers, .CodeMirror-gutter.CodeMirror-foldgutter {
-    background: transparent;
-}
-
-.markdown-source-view.mod-cm6 .cm-gutters {
-    background: transparent !important;
-}
-
-/* content colors */
-
-.cm-s-obsidian span.cm-hashtag {
-    color: var(--text-accent);
-}
-
-/* add icons to tree */
-
-.nav-folder .nav-folder-title-content::before {
-    content: '📂 ';
-}
-
-.nav-folder.is-collapsed .nav-folder-title-content::before {
-    content: '📁 ';
-}
-
-.workspace-leaf-content[data-type="file-explorer"] .nav-folder.mod-root > .nav-folder-title .nav-folder-title-content::before {
-    content: '🏠 '
-}
-
-.workspace-leaf-content[data-type="file-explorer"] .nav-file .nav-file-title-content::before {
-    content: '📝 '
-}
-
-/* special icon example */
-
-.workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path^="samplepaththatdoesntexist"] .nav-file-title-content::before {
-    content: '⚡ ';
+::selection {
+    background-color: var(--text-selection);
+    color: white;
 }
 
 /* callouts */
-
-body {
-    --callout-radius: 0;
-    --callout-padding: 18px;
-}
 
 .callout .callout-content > :last-child {
     margin-block-end: 0;
@@ -918,5 +650,5 @@ body {
 
 .callout .callout-title .callout-icon {
     margin-top: 0;
-    margin-right: 0.15em;
+    margin-inline-end: 0.15em;
 }

@@ -4,7 +4,7 @@
 
 This is the relatively opinionated Sodalite theme for [Obsidian](https://obsidian.md/). Inspired by in part some Windows 10 and 11 design ideas (Fluent, Mica). The theme only supports dark mode, as of v0.1.
 
-Tested with Obsidian v1.11.5.
+Tested with Obsidian v1.14.5.
 
 ![Sodalite for Obsidian](./screenshot.png)
 
@@ -24,7 +24,7 @@ To save on the typically limited vertical screen space, the theme moves the stat
 
 In Obsidian, navigate to **Settings > Appearance > Themes** - you should be able to find it in the list there.
 
-Alternatively, download the `sodalite.css` file to you vault's `.obsidian/themes` folder and select it under **Settings > Appearance**.
+Alternatively, download `theme.css` and `manifest.json` into your vault's `.obsidian/themes/Sodalite` folder and select it under **Settings > Appearance**.
 
 ## Recommended Settings
 
@@ -48,6 +48,25 @@ Sodalite offers CSS snippets to alter certain smaller aspects of the theme.
 These can be found in the `snippets` folder of the repository.
 
 ## Changelog
+
+**0.10.0**
+
+- fixed the theme for Obsidian 1.14: title bar text, pane gradients, sidebar and tab backgrounds, the rounded corner with a collapsed sidebar, and the settings window
+- the theme now sets Obsidian's own CSS variables instead of overriding its selectors, and uses no `!important`
+- removed styles for UI that Obsidian no longer has (CodeMirror 5, the old frontmatter box, the Sliding Panes plugin, pre-1.0 tabs)
+- note content has the same top margin in editing and reading view, and properties sit closer to the header and the text below them
+- the frosted floating header covers notes, bases and the graph view; other views such as canvas and PDF get a plain header
+- the note title header has no bottom border, so it no longer ends at a different line than the sidebar toolbars, and the title sits level with the header buttons
+- sidebar toolbar buttons are vertically centered, and the toolbar grows with its search filter instead of overlapping the list
+- the backlinks toolbar floats as frosted glass like the other sidebar toolbars
+- sidebar panes have the same inset on top as on the sides
+- icons are a notch larger than Obsidian's defaults
+- the vault switcher at the bottom of the left sidebar blends in with the panes
+- the modal close button stays inside the modal
+- the title strip is no longer added on mobile
+- the window title and theme link show only in the main window; the settings window keeps a plain title bar
+- note tabs have full-height separators, and a hovered tab tints as a whole instead of showing a rounded inner box and an outline
+- requires Obsidian 1.14.5 or newer
 
 **0.9.0**
 
